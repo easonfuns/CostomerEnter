@@ -383,7 +383,9 @@ async function init(){
     sel.innerHTML='<option value="">— 選擇您的健康顧問 —</option>';
     dealers.forEach(d=>{
       const o=document.createElement('option');
-      o.value=d.id; o.textContent=d.name+(d.team?' · '+d.team:'');
+      const last5=String(d.id).slice(-5);
+      const initial=d.name?d.name[0]:'?';
+      o.value=d.id; o.textContent=last5+' · '+initial;
       sel.appendChild(o);
     });
     buildGrid('concerns-grid',CONCERNS,'c',selConcerns,'concern-other-wrap');
